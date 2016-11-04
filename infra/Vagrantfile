@@ -1,0 +1,45 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure(2) do |config|
+
+  config.vm.define "director" do |director|
+    director.vm.box = "fedora/24-cloud-base"
+    director.vm.network "private_network", ip: "192.168.33.2"
+    director.vm.hostname = "director"
+    director.vm.synced_folder "director/sf/", "/vagrant"
+    director.persistent_storage.enabled = true
+    director.persistent_storage.use_lvm = false
+    director.persistent_storage.location = "director/dev/usb.vdi"
+    director.persistent_storage.size = 1000
+    director.persistent_storage.mountname = "usb"
+    director.persistent_storage.filesystem = "ext4"
+    director.persistent_storage.mountpoint = "/bacula/backup"
+    director.vm.provision "shell", path: "director/provision/setup.sh"
+  end
+
+  config.vm.define "storage" do |storage|
+    storage.vm.box = "fedora/24-cloud-base"
+    storage.vm.network "private_network", ip: "192.168.33.3"
+    storage.vm.hostname = "storage"
+    storage.vm.synced_folder "storage/sf/", "/vagrant"
+    storage.vm.provision "shell", path: "storage/provision/setup.sh"
+  end
+
+  config.vm.define "admin" do |admin|
+    admin.vm.box = "fedora/24-cloud-base"
+    admin.vm.network "private_network", ip: "192.168.33.4"
+    admin.vm.hostname = "admin"
+    admin.vm.synced_folder "admin/sf/", "/vagrant"
+    admin.vm.provision "shell", path: "admin/provision/setup.sh"
+  end
+
+  config.vm.define "client" do |client|
+    client.vm.box = "fedora/24-cloud-base"
+    client.vm.network "private_network", ip: "192.168.33.5"
+    client.vm.hostname = "client"
+    client.vm.synced_folder "client/sf/", "/vagrant"
+    client.vm.provision "shell", path: "client/provision/setup.sh"
+  end
+
+end
