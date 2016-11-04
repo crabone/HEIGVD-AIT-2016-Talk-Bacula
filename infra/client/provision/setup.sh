@@ -35,7 +35,7 @@ chmod 640 /etc/bacula/fd-client.pem /etc/bacula/master.cert
 # Comment if SELinux is disabled or not installed.
 restorecon -R /bacula
 
-rm master.key fd-director.key fd-director.cert
+rm master.key fd-client.key fd-client.cert
 echo "Done !"
 
 echo "Set configuration for the Bacula Client"
