@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo "Installing Bacula (Client/Admin)"
-dnf update
 dnf install -y bacula-common bacula-client bacula-console
 echo "Done !"
 
