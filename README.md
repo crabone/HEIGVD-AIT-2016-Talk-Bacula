@@ -74,6 +74,9 @@ un ordinateur portable. Un petit seveur (raspberryPi) qui fait office de chef
 d'orchestre, dont on est connecté un disque dur externe. Et d'un serveur
 distant (de type Amazon p.e.).
 
+Chacune des machines sont basées sur la distribution Fedora 24, avec la suite
+Bacula 7.4.4 d'installée, et sécurisé avec SELinux.
+
 ## EXEMPLE D'UTILISATION
 
 Pour administrer son infrastructure, il suffit d'ouvrir `bconsole` depuis
