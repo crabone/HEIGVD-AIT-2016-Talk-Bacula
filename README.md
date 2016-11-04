@@ -1,6 +1,3 @@
-```bash
-```
-
 # DEMO: SAUVEGARDER SES FICHIERS AVEC BACULA
 
 ## PRÉ-REQUIS
@@ -79,12 +76,60 @@ distant (de type Amazon p.e.).
 
 ## EXEMPLE D'UTILISATION
 
+Pour administrer son infrastructure, il suffit d'ouvrir `bconsole` depuis
+l'administrateur ou le director.
+
 ```bash
+[vagrant@director ~]$ sudo bconsole
+Connecting to Director localhost:9101
+1000 OK: 102 director-dir Version: 7.4.4 (20 September 2016)
+Enter a period to cancel a command.
+* help
 ```
+
+La commande `status`, permet d'obtenir des détails sur tout les composants
+de l'infrastructure de sauvegarde.
+
+```bacula
+* status
+```
+
+La commande `label`, permet de définir un nom et un type pour la prochaine
+sauvegarde.
+
+```bacula
+* label
+```
+
+La commande `run`, permet de sélectionner et de lancer un nouveau job.
+
+```bacula
+* run
+```
+
+La commande `messages`, permet d'obtenir des informations sur le déroulement
+des jobs. C'est à cet endroit que l'on saura si une sauvegarde a échouée.
+
+```bacula
+* messages
+```
+
+## CONFIGURATION
+
+Bacula est principalement configuré via des fichiers de configuration, se
+trouvant dans **/etc/bacula**.
+
+### DIRECTOR
+
+Par défaut, le fichier permettant de configurer le Director se nome
+**bacula-dir.conf** . Pour une meilleure lisibilité, la configuration est
+segmentée en plusieurs fichiers, se trouvant dans le répertoire
+**/etc/bacula/conf.d**.
 
 ## AMELIORATIONS
 
 * Définir un mot-de-passe pour la base de donnée SQLite3
+* Implémenter une authorité de certification, et chiffrer les communications.
 
 ## À PROPOS
 
