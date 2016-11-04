@@ -5,6 +5,10 @@ yum update
 yum install -y bacula-common bacula-client
 echo "Done !"
 
+echo "Installing OpenSSL" 
+dnf install -y openssl
+echo "Done !"
+
 echo "Create directory for restoring files, and set correct permissions"
 mkdir -p /bacula/restore
 chown -R bacula:bacula /bacula

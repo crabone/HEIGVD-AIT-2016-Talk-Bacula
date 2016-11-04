@@ -1,29 +1,29 @@
 #!/bin/bash
 
-#echo "Installing Bacula (Director/Catalog)"
-#dnf install -y bacula-common bacula-director bacula-storage bacula-console bacula-client
-#echo "Done !"
-#
+echo "Installing Bacula (Director/Catalog)"
+dnf install -y bacula-common bacula-director bacula-storage bacula-console bacula-client
+echo "Done !"
+
 echo "Installing OpenSSL" 
 dnf install -y openssl
 echo "Done !"
-#
-#echo "Set SQLite3 as default for Bacula"
-#alternatives --set libbaccats.so /usr/lib64/libbaccats-sqlite3.so
-#sed -i -e 's/default_db_type=postgresql/default_db_type=sqlite3/g' /usr/libexec/bacula/*
-#echo "Done !"
-#
-#echo "Grant SQLite3 privileges for Bacula"
-#/usr/libexec/bacula/grant_sqlite3_privileges
-#echo "Done !"
-#
-#echo "Create SQLite3 database for Bacula"
-#/usr/libexec/bacula/create_sqlite3_database
-#echo "Done !"
-#
-#echo "Create tables for the newly created SQLite3 database"
-#/usr/libexec/bacula/make_sqlite3_tables
-#echo "Done !"
+
+echo "Set SQLite3 as default for Bacula"
+alternatives --set libbaccats.so /usr/lib64/libbaccats-sqlite3.so
+sed -i -e 's/default_db_type=postgresql/default_db_type=sqlite3/g' /usr/libexec/bacula/*
+echo "Done !"
+
+echo "Grant SQLite3 privileges for Bacula"
+/usr/libexec/bacula/grant_sqlite3_privileges
+echo "Done !"
+
+echo "Create SQLite3 database for Bacula"
+/usr/libexec/bacula/create_sqlite3_database
+echo "Done !"
+
+echo "Create tables for the newly created SQLite3 database"
+/usr/libexec/bacula/make_sqlite3_tables
+echo "Done !"
 
 echo "Create directory for backup/restore files, and set correct permissions"
 mkdir -p /bacula/restore

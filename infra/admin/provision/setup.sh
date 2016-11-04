@@ -5,6 +5,10 @@ dnf update
 dnf install -y bacula-common bacula-client bacula-console
 echo "Done !"
 
+echo "Installing OpenSSL" 
+dnf install -y openssl
+echo "Done !"
+
 echo "Create directory for restoring files, and set correct permissions"
 mkdir -p /bacula/restore
 chown -R bacula:bacula /bacula
